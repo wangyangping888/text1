@@ -9,7 +9,10 @@
 		<input type="text" name="user" id="user" value="admin" />
 		<script type="text/javascript">
 			var user = document.querySelector("#user");
-			var block = document.querySelector(".block")
+			var block = document.querySelector(".block");
+			user.onfocus = function(){
+				console.log("光标聚焦");
+			}
 		</script>
 	</body>
 </html>
