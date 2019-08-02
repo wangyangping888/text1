@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>图书馆馆里系统</title>
+	</head>
+	<body>
+		<ol id="books">
+			<li>《西游记》</li>
+			<li>《红楼梦》</li>
+			<li>《水浒传》</li>
+			<li>《三国演义》</li>
+		</ol>
+		<input type="text" name="bookName" id="bookName" value="" />
+		<button onclick="tianjia()">添加</button>
+		<br />
+		<input type="number" name="bookNo" id="bookNo" value="1" min="1" step="1" />
+		<button onclick="shanchu()">删除</button>
+		<br />
+		<input type="text" name="bookName2" id="bookName2" value="" />
+		<button onclick="replace(this)">替换</button>
+		<br />
+		<input type="number" name="bookNo2" id="bookNo2" value="1" min="1" step="1"/>
+		
+		<script type="text/javascript">
+			var books=document.getElementById("books");
+			var bookName=document.getElementById("bookName");
+			function tianjia(){
+				if(bookName.value==""){
+					alert("书名不能为空");
+					return;
+				}
+				var newLi=document.createElement("li");
+				newLi.innerText="《"+bookName.value+"》";
+				books.appendChild(newLi);
+			}
+			var books=document.getElementById("books")
+			var bookNo=document.getElementById("bookNo");
+			function shanchu(){
+				if(bookNo.value<1||bookNo.value>books.childElementCount){
+					alert("删除范围越界，不能完成操作");
+					return;
+				}
+				books.removeChild(books.children[bookNo.value-1]);
+			}
+			
+			function replace(btn){
+				var bookName=btn.previousElementSibling.value;
+				var bookNo=btn.nextElementSibling.value;
+				if(bookName==""){
+					alert("书名不能为空");
+					
+				}else if(bookNo<0||bookNo>books.childElementCount){
+					alert("删除范围越界，不能完成操作！")
+				}else{
+					var newLi=document.createElement("li");
+					newLi.innerText="《"+bookName+"》";
+					books.replaceChild(newLi,books.children[bookNo-1]);
+				}
+				
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.image-box{
+				width: 755px;
+				height: 353px;
+				border: solid 2px red;
+				margin: 50px auto;
+				position: relative;
+				overflow: hidden;
+				
+			}
+			.image-box ul{
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+				position: absolute;
+				width: 3775px;
+				height: 300px;
+				top: 0px;
+				left: 0;
+				-webkit-transition: left 1s cubic-bezier(0, 1.26, 1,-0.32);
+				
+			}
+			.image-box ul li{
+				width: 755px;
+				height: 353px;
+				flex-direction: column;
+				float: left;
+				
+				
+				
+			}
+			.image-box ul li img{
+				width: 755px;
+				height: 353px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="image-box">
+			<ul>
+				<li><img src="img/banner1.jpg"/></li>
+				<li><img src="img/banner2.jpg"/></li>
+				<li><img src="img/banner3.jpg"/></li>
+				<li><img src="img/banner4.jpg"/></li>
+				<li><img src="img/banner5.jpg"/></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var ul = document.querySelector(".image-box ul");
+			var index = 0;
+			var leftOffset = 0;
+			var t = setInterval(function(){
+				index=(index+1)%5;
+				var timer = setInterval(function(){
+					if(leftOffset>(-755*index)){
+						leftOffset-=20;
+					}else if(leftOffset<-755*index){
+						leftOffset+=20
+					}else{
+						clearInterval(timer);
+					}
+					ul.style.left =-755*index+"px";
+				},10)
+				
+			},3000);
+		</script>
+	</body>
+</html>
