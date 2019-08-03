@@ -7,49 +7,68 @@
 			*{
 				margin: 0;
 			}
-			.clear{
-				overflow: hidden;
-			}
-			.image{
+			.tupian{
 				width:400px;
 				height: 400px;
 				border: black 1px solid;
 				float: left;
+				position: relative;
+				
+			}
+			.tupian img{
+				z-index: -999;
+				position: relative;
 			}
 			.shubiao{
-				width: 50px;
-				height: 50px;
+				width: 100px;
+				height: 100px;
 				background-color: #000000;
 				opacity: 0.5;
 				position: absolute;
-				left: 0px;
-				top: 0px;
+				left: 0;
+				top: 0;
+				z-index: -1;
 			}
 			.text{
 				width: 400px;
 				height: 400px;
 				border: 1px solid #000000;
 				float: left;
-				margin-left: 20px;
+				position: absolute;
+				top: 0;
+				left: 402px;
+				background-image:url(img/timg.jpg) ;
+				background-size: 1600px 1600px;
+				background-position: 0 0;
+				
 			}
 		</style>
 	</head>
 	<body>
 		<div class="tupian clear">
+			<img src="img/timg.jpg" width="400px" height="400px" />
 			<div class="shubiao"></div>
-			<div class="image">
-				<img src="img/timg.jpg" width="400px" height="400px" />
-			</div>
-			<div class="text"></div>
 		</div>
+		<div class="text"></div>
 		<script type="text/javascript">
 			var shubiao=document.querySelector(".shubiao");
-			var tupiap=document.querySelector(".tupiao");
-			tupiao.onmousemove = function(e){
+			var tupian=document.querySelector(".tupian");
+			var text=document.querySelector(".text");
+			tupian.onmouseover = 
+			
+			tupian.onmousemove = function(e){
 				
-				var x=e.offsetX;
-				var y=e.offsetY;
-				x.style.top
+				var x=e.offsetX-50;
+				var y=e.offsetY-50;
+				x=x<0?0:x;
+				y=y<0?0:y;
+				x=x>300?300:x;
+				y=y>300?300:y;
+				
+				
+				shubiao.style.left =  x+"px";
+				shubiao.style.top =  y+"px";
+				text.style.backgroundPosition =-4*x+"px "+y*(-4)+"px";
 				
 			}
 		</script>
